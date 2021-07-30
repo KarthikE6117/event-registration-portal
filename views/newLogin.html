@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" background="back.jpg">
+
+<head>
+    <title>Login page</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="" type="text/css">
+
+    <style>
+        header {
+            font-family: sans-serif;
+            font-weight: bold;
+            font-style: italic;
+            color: #fff;
+            text-align: center;
+            text-decoration: solid;
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+            font-family: sans-sarif;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(back1.jpg);
+            background-size: cover;
+        }
+
+        .box {
+            width: 400px;
+            padding: 20px;
+            position: absolute;
+            top: 55%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, .8);
+            box-sizing: border-box;
+            box-shadow: 0px 5px 15px grey;
+            border-radius: 5%;
+        }
+
+        .box h2 {
+            margin: 0 0 30px;
+            padding: 0;
+            color: #fff;
+            text-align: center;
+        }
+
+        .box h4 {
+            color: #fff;
+            margin: 0 0 10px;
+            padding-top: 20px;
+        }
+
+        .box .inputBox {
+            position: relative;
+        }
+
+        .box .inputBox input {
+            width: 100%;
+            padding: 10px 0;
+            font-size: 16px;
+            color: #fff;
+            margin-bottom: 30px;
+            border: none;
+            border-bottom: 1px solid#fff;
+            outline: none;
+            background: transparent;
+        }
+
+        .box .inputBox label {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 10px 0;
+            font-size: 16px;
+            color: #fff;
+            pointer-events: none;
+            transition: .5s;
+        }
+
+        .box .inputBox input:focus~label,
+        .box .inputBox input:valid~label {
+            top: -18px;
+            left: 0;
+            color: #03a9f4;
+            font-size: 12px;
+        }
+
+        .box input[type="submit"] {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #fff;
+            background: #03a9f4;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+
+        }
+
+        .box h4 a {
+            color: #03a9f4;
+            text-decoration: none;
+            font-style: italic;
+        }
+
+        .box h4 a:hover {
+            font-size: large;
+
+        }
+
+        .radio-group,
+        .radio1-group {
+            margin-top: 10px;
+            margin-bottom: 13px;
+        }
+
+        .radio,
+        .radio1 {
+            font-size: 16px;
+            font-weight: 500;
+            text-transform: capitalize;
+            display: inline-block;
+            color: #fff;
+            margin-left: 40px;
+            position: relative;
+            padding-left: 30px;
+            cursor: pointer;
+
+        }
+
+        .radio+.radio,
+        .radio1+.radio1 {
+            margin-left: 20px;
+        }
+
+        .radio input[type="radio"],
+        .radio1 input[type="radio"] {
+            display: none;
+        }
+
+        .radio span,
+        .radio1 span {
+            height: 15px;
+            width: 15px;
+            border-radius: 50%;
+            border: 3px solid #03a9f4;
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0px;
+
+        }
+
+        .radio span:after,
+        .radio1 span:after {
+            content: "";
+            height: 10px;
+            width: 10px;
+            background: #03a9f4;
+            display: block;
+            position: absolute;
+            left: 52%;
+            top: 52%;
+            transform: translate(-50%, -50%) scale(0);
+            border-radius: 50%;
+            transition: 300ms easi-in-out 0s;
+
+        }
+
+        .radio input[type="radio"]:checked~span:after,
+        .radio1 input[type="radio"]:checked~span:after {
+            transform: translate(-50%, -50%) scale(1);
+        }
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <h1>Breaking Electronics</h1>
+    </header>
+
+    <div class="box">
+        <h2>Sign Up</h2>
+        <form action="/register" method="POST">
+            <div class="radio1-group">
+
+                <script>
+                    function teamNameEnable() {
+
+                        document.getElementById("teamName").disabled = false;
+                        document.getElementById("teamLeader").disabled = false;
+                        document.getElementById("teamMember").disabled = false;
+
+                    }
+                    function teamNameDisable() {
+
+                        document.getElementById("duo").checked = false;
+                        document.getElementById("teamMember").checked = false;
+                        document.getElementById("teamLeader").checked = false;
+                        document.getElementById("teamName").value = "";
+                        document.getElementById("teamName").disabled = true;
+                        document.getElementById("teamLeader").disabled = true;
+                        document.getElementById("teamMember").disabled = true;
+
+                    }
+                </script>
+
+                <label class="radio1">
+                    <input type="radio" value="solo" name="mode" onclick="teamNameDisable()" id="solo">
+                    Solo<span></span>
+                </label>
+                <label class="radio1">
+                    <input type="radio" value="duo" name="mode" onclick="teamNameEnable()" id="duo">
+                    Duo
+                    <span></span>
+                </label>
+                <label class="radio1">
+                    <input type="radio" value="squad" name="mode" onclick="teamNameEnable()" id="squad">
+                    Squad
+                    <span></span>
+                </label>
+
+            </div>
+            <div class="inputBox">
+                <input type="text" required name="teamName" id="teamName">
+                <label>Team Name</label>
+            </div>
+            <div class="radio-group">
+                <label class="radio">
+                    <input type="radio" value="teamLeader" name="team" id="teamLeader">
+                    Team Leader<span></span>
+                </label>
+                <label class="radio">
+                    <input type="radio" value="teamMember" name="team" id="teamMember">
+                    Team Member
+                    <span></span>
+                </label>
+
+            </div>
+            <div class="inputBox">
+                <input type="text" required name="username">
+                <label>Username</label>
+            </div>
+            <div class="inputBox">
+                <input type="email" id="email" name="email" required>
+                <label>Email</label>
+            </div>
+            <div class="inputBox">
+                <input type="password" name="password" required>
+                <label>Password</label>
+            </div>
+            <div class="inputBox">
+                <input type="password" required name="cfmPassword">
+                <label>Confirm password</label>
+            </div>
+            <div class="inputBox">
+                <input type="text" required name="schoolName">
+                <label>School Name</label>
+            </div>
+
+
+            <input type="submit" value="submit" name="register">
+
+        </form>
+    </div>
+</body>
+
+</html>

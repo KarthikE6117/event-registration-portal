@@ -1,0 +1,22 @@
+{
+    "name": "event-reisteration",
+    "version": "0.0.1",
+    "description": "This App is deployed for Event Registeration.",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js"
+    },
+    "dependencies": {
+        "express": "^4.17.1",
+        "express-session": "1.17.1",
+        "mysql": "2.18.1",
+        "body-parser": "1.19.0",
+        "mongodb": "3.5.7",
+        "mongoose": "5.9.13",
+        "alert": "4.1.1"
+    },
+    "engines": {
+        "node": "12.x"
+    },
+    "license": "MIT"
+}

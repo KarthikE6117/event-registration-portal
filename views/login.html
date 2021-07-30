@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" background="back.jpg">
+
+<head>
+    <title>Login page</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="" type="text/css">
+    <style>
+        header {
+            font-family: sans-serif;
+            font-weight: bold;
+            font-style: italic;
+            color: #fff;
+            text-align: center;
+            text-decoration: solid;
+        }
+
+        .mode {
+            color: #fff;
+            font-family: sans-serif;
+            font-style: inherit;
+            text-align: center;
+            padding-top: 10px;
+            margin-top: 40px;
+
+
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+            font-family: sans-sarif;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(back1.jpg);
+            background-size: cover;
+        }
+
+        .box {
+            width: 400px;
+            padding: 40px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, .8);
+            box-sizing: border-box;
+            box-shadow: 0px 5px 15px grey;
+            border-radius: 5%;
+        }
+
+        .box h2 {
+            margin: 0 0 30px;
+            padding: 0;
+            color: #fff;
+            text-align: center;
+        }
+
+        .box h4 {
+            color: #fff;
+            margin: 0 0 10px;
+            padding-top: 20px;
+        }
+
+        .box .inputBox {
+            position: relative;
+        }
+
+        .box .inputBox input {
+            width: 100%;
+            padding: 10px 0;
+            font-size: 16px;
+            color: #fff;
+            margin-bottom: 30px;
+            border: none;
+            border-bottom: 1px solid#fff;
+            outline: none;
+            background: transparent;
+        }
+
+        .box .inputBox label {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 10px 0;
+            font-size: 16px;
+            color: #fff;
+            pointer-events: none;
+            transition: .5s;
+        }
+
+        .box .inputBox input:focus~label,
+        .box .inputBox input:valid~label {
+            top: -18px;
+            left: 0;
+            color: #03a9f4;
+            font-size: 12px;
+        }
+
+        .box input[type="submit"] {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #fff;
+            background: #03a9f4;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+
+        }
+
+        .box h4 a {
+            color: #03a9f4;
+            text-decoration: none;
+            font-style: italic;
+        }
+
+        .box h4 a:hover {
+            font-size: large;
+
+        }
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <h2>Breaking Electronics</h2>
+    </header>
+
+    <div class="box">
+        <h2>Login</h2>
+        <form action="/login" , method="POST">
+            <div class="inputBox">
+                <input type="text" required name="username">
+                <label>Username</label>
+            </div>
+            <div class="inputBox">
+                <input type="password" required name="password">
+                <label>password</label>
+            </div>
+            <input type="submit" value="Submit" name="login">
+        </form>
+        <h4> Don't have account?<a href="/register"> Sign Up</a></h4>
+    </div>
+</body>
+
+</html>

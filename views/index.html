@@ -1,0 +1,641 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8" lang="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1 ,shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Changa:wght@300&family=Satisfy&display=swap" rel="stylesheet">
+    <link href="https://code.jquery.com/jquerry-3.1.1.js" rel="stylesheet">
+    <style>
+        html,
+        body {
+            margin: 0px;
+            padding: 0px;
+            margin-bottom: 0px;
+            box-sizing: border-box;
+            text-decoration: none;
+            list-style: none;
+            background: linear-gradient(120deg, #3e32a8, #e310c7);
+        }
+
+        nav {
+            height: 85px;
+            width: 100%;
+            background: black;
+
+        }
+
+        .box {
+            display: none;
+        }
+
+        section {
+            background: url(home.jpg), no-repeat;
+            background-size: cover;
+
+        }
+
+        label .clg {
+            color: white;
+            font-size: 20px;
+        }
+
+        nav ul {
+            float: right;
+            margin-right: 10px;
+        }
+
+        nav ul li {
+            text-decoration: none;
+            list-style: none;
+            font-size: medium;
+            font-style: italic;
+            display: inline-block;
+            margin: 10px 10px;
+            color: honeydew;
+            font-family: 'Changa', sans-serif;
+
+        }
+
+        label.logo {
+            margin-top: 20px;
+            color: honeydew;
+            text-decoration: dotted;
+            font-size: 35px;
+            line-height: 80px;
+            font-weight: bold;
+            padding: 0 100px;
+            font-family: 'Satisfy', cursive;
+
+        }
+
+        nav ul li a {
+            color: honeydew;
+            font-size: 17px;
+            padding: 7px 10px;
+            border-radius: 10px;
+            margin-right: 0px;
+            text-decoration: none;
+        }
+
+        a.active,
+        a:hover {
+            background: #1b9bff;
+            transition: .5s;
+        }
+
+        .content {
+            width: 100%;
+            height: 408px;
+            display: flex;
+            background: transparent;
+        }
+
+        .content .blue {
+            width: 800px;
+            height: 100%;
+            margin-left: 14px;
+            overflow: hidden;
+        }
+
+        .content .login {
+            width: 300px;
+            height: 400px;
+            margin-left: 20px;
+            margin-top: 5px;
+            margin-right: 5px;
+        }
+
+        .content .notification {
+            width: 300px;
+            height: 400px;
+            margin-left: 5px;
+            margin-top: 10px;
+            margin-right: 5px;
+            color: white;
+            text-align: center;
+            padding-top: 1px;
+
+        }
+
+        .checkbtn {
+            font-size: 30px;
+            color: white;
+            float: right;
+            margin-right: 20px;
+            cursor: pointer;
+            padding-right: 30px;
+            margin-top: 28px;
+            margin-left: 20px;
+        }
+
+        #check {
+            display: none;
+        }
+
+        @media (max-width: 1200px) {
+            label.logo {
+                font-size: 20px;
+                padding-left: 50px;
+                height: 20px;
+
+            }
+
+            nav ul li a {
+                font-size: 16px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            nav ul li a {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 650px) {
+            label.logo {
+                font-size: 20px;
+                padding-left: 20px;
+                height: 10px;
+            }
+
+            .content .navigation,
+            .content .bar {
+                display: none;
+            }
+        }
+
+        @media (max-width: 530px) {
+            label.logo {
+                font-size: 20px;
+                padding-left: 10px;
+            }
+        }
+
+        @media (max-width: 850px) {
+            .checkbtn {
+                display: block;
+            }
+
+            ul {
+                position: fixed;
+                width: 100%;
+                height: 100vh;
+                background: transparent;
+                top: 63px;
+                left: -130%;
+                text-align: center;
+                padding-right: 30px;
+                transition: all .5s;
+            }
+
+            nav ul li {
+                display: block;
+                margin-top: 70px;
+                line-height: 30px;
+            }
+
+            nav ul li a {
+                font-size: 20px;
+                margin: 50px 0;
+            }
+
+            a:hover,
+            a.active {
+                background: none;
+                color: gold;
+            }
+
+            #check:checked~ul {
+                left: 0;
+                z-index: 1;
+            }
+
+            footer {
+                display: inline-block;
+                height: 100%;
+            }
+
+            .content1 {
+                display: block;
+            }
+
+            .content {
+                display: block;
+            }
+
+            .instruction {
+                display: none;
+            }
+        }
+
+
+        .blue .navigation {
+            position: absolute;
+            bottom: 160px;
+            margin-left: 150px;
+            display: flex;
+        }
+
+        .bar {
+            width: 60px;
+            height: 20px;
+            border: 2px solid white;
+            margin: 6px;
+            bottom: 400px;
+            cursor: pointer;
+            transition: .4s;
+        }
+
+        input[name="r"] {
+            position: absolute;
+            visibility: hidden;
+        }
+
+        .bar:hover {
+            background: #fff;
+        }
+
+        .slides {
+            width: 500%;
+            height: 100%;
+            display: flex;
+        }
+
+        .slide {
+            width: 20%;
+            transition: 0.5s;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+        }
+
+        #r1:checked~.s1 {
+            margin-left: 0%;
+        }
+
+        #r2:checked~.s1 {
+            margin-left: -20%;
+        }
+
+        #r3:checked~.s1 {
+            margin-left: -40%;
+        }
+
+        #r4:checked~.s1 {
+            margin-left: -60%;
+        }
+
+        #r5:checked~.s1 {
+            margin-left: -80%;
+        }
+
+        .content .login,
+        .content .notification {
+            padding: 40px;
+            background: black;
+            box-sizing: border-box;
+            border-radius: 5%;
+        }
+
+        .login h2 {
+            margin: 0 0 30px;
+            padding: 0;
+            color: #fff;
+            text-align: center;
+        }
+
+        .login h4 {
+            color: #fff;
+            margin: 0 0 10px;
+            padding-top: 20px;
+        }
+
+        .login .inputBox {
+            position: relative;
+        }
+
+        .login .inputBox input {
+            width: 100%;
+            padding: 10px 0;
+            font-size: 16px;
+            color: #fff;
+            margin-bottom: 30px;
+            border: none;
+            border-bottom: 1px solid#fff;
+            outline: none;
+            background: transparent;
+        }
+
+        .login .inputBox label {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 10px 0;
+            font-size: 16px;
+            color: #fff;
+            pointer-events: none;
+            transition: .5s;
+        }
+
+        .login.inputBox input:focus~label,
+        .login .inputBox input:valid~label {
+            top: -18px;
+            left: 0;
+            color: #03a9f4;
+            font-size: 12px;
+        }
+
+        .login input[type="submit"] {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #fff;
+            background: #03a9f4;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+
+        }
+
+        .login h4 a {
+            color: #03a9f4;
+            text-decoration: none;
+            font-style: italic;
+        }
+
+        .login h4 a:hover {
+            font-size: large;
+            background: none;
+
+        }
+
+        .instructionbox {
+            padding-bottom: 20px;
+            padding-top: 20px;
+            color: white;
+            margin-bottom: 0px;
+            text-align: center;
+            background: transparent;
+        }
+
+        .instruction {
+            width: 1200px;
+            height: 100%;
+            margin-left: 20px;
+            margin-top: 0px;
+            margin-right: 5px;
+            padding: 40px;
+            background: black;
+            box-sizing: border-box;
+            border-radius: 40px;
+            transform: translate(5%);
+
+        }
+
+        .instruction h2 {
+            text-align: center;
+            font-family: 'Satisfy', cursive;
+            font-weight: bolder;
+            font-size: 40px;
+        }
+
+        .instruction .poster {
+            background: white;
+            width: 800px;
+            height: 800px;
+            display: flex;
+            margin-left: 100px;
+        }
+
+        .notification .rols {
+            text-align: center;
+            border-bottom: 2px solid #fff;
+            padding-bottom: 5px;
+        }
+
+        .instruction ul {
+            list-style: linear-gradient(120deg, #3e32a8, #e310c7);
+            font-family: 'Changa', sans-serif;
+            font-size: 20px;
+            text-align: justify;
+
+        }
+
+        footer {
+            bottom: 0px;
+            width: 100%;
+            height: 200px;
+            background: white;
+            color: white;
+            margin-top: 0px;
+            display: flex;
+            background: black;
+            position: relative;
+
+        }
+
+        .left {
+            width: 50%;
+            height: 100%;
+            background: transparent;
+            color: white;
+            text-align: center;
+        }
+
+        .right {
+            width: 50%;
+            height: 100%;
+            background: transparent;
+            margin-left: 100px;
+            color: white;
+            text-align: center;
+        }
+
+        .content1 {
+            text-align: justify;
+            padding-left: 25%;
+            font-size: 20px;
+            font-family: 'Changa', sans-serif;
+            line-height: 20px;
+        }
+
+        .social {
+            margin-left: 100px;
+        }
+
+        .social a {
+            background: none;
+            color: white;
+            list-style: none;
+            text-decoration: none;
+            margin-left: 20px;
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+
+        .social a:hover {
+            color: purple;
+        }
+    </style>
+    <script>
+        function slider() {
+            $current = $('.slides img.active1');
+            if ($current.length == 0) { $('.slides img:first-child').addClass('active1'); }
+            else {
+                $next = $current.removeClass('active1').next();
+                if ($next.length == 0) {
+                    $('.slides img:first-child').addClass('active');
+                } else {
+                    $next.addClass('active');
+                }
+
+            }
+        }
+        setInterval(slider, 5000);
+    </script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <input type="checkbox" id="check">
+            <label for="check" class="checkbtn">
+                <i class="fa fa-bars"></i>
+            </label>
+
+            <label class="logo"> BREAKING Electronics</label>
+            <ul>
+                <li><a href="" class="active">HOME</a></li>
+                <li><a href="">CONTACT</a></li>
+                <li><a href="">In</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="content">
+        <div class="notification">
+            <h2>Notification</h2>
+            <marquee behavior="scroll" direction="up" scrollamount="6"
+                onmouseover="this.setAttribute('scrollamount',0,0); this.stop()"
+                onmouseout="this.setAttribute('scrollamount',6,0); this.start()">
+                <script>
+                    for (var i = 0; i <= 5; i++) {
+                        document.write("<p class=rols> Moving element" + i + "<p>")
+                    }
+                </script>
+            </marquee>
+
+        </div>
+        <div class="blue">
+            <div class="slides">
+                <input type="radio" name="r" id="r1" checked>
+                <input type="radio" name="r" id="r2">
+                <input type="radio" name="r" id="r3">
+                <input type="radio" name="r" id="r4">
+                <input type="radio" name="r" id="r5">
+                <div class="slide s1 active1">
+                    <img src="https://smvec.ac.in/wp-content/uploads/2020/03/SMVEC.jpg" alt="slide1">
+                </div>
+                <div class="slide">
+                    <img src="https://smvec.ac.in/wp-content/uploads/2020/03/ai_ds.jpg" alt="slide1">
+                </div>
+                <div class="slide">
+                    <img src="public/ad3.jpg" alt="slide1">
+                </div>
+                <div class="slide">
+                    <img src="public/ad4.jpg" alt="slide1">
+                </div>
+                <div class="slide">
+                    <img src="public/ad5.jpg" alt="slide1">
+                </div>
+
+            </div>
+            <div class="navigation">
+                <label for="r1" class="bar"></label>
+                <label for="r2" class="bar"></label>
+                <label for="r3" class="bar"></label>
+                <label for="r4" class="bar"></label>
+                <label for="r5" class="bar"></label>
+            </div>
+        </div>
+        <div class="login">
+            <h2>Login</h2>
+            <form action="/login" method="post">
+                <div class="inputBox">
+                    <input type="text" required name="">
+                    <label>Username</label>
+                </div>
+                <div class="inputBox">
+                    <input type="password" required name="">
+                    <label>password</label>
+                </div>
+                <input type="submit" value="Submit" name="">
+            </form>
+            <h4> Don't have account?<a href="/login"> Sign Up</a></h4>
+        </div>
+
+    </div>
+    <div class="instructionbox">
+        <div class="instruction">
+            <h2>Winners</h2>
+            <div class="poster">
+                <img src="public/winner.jpg" alt="winners">
+            </div>
+            <h2> Instructions</h2>
+            <ul>
+                <li>Contestant(s) can register as an individual or as a team with 2 or 4 players</li>
+                <li>Wineers are based on hierachy of quiz marks</li>
+                <li>Questions will be posted on Friday</li>
+                <li>Questions postage will be notified to the participant(s) through their event registered
+                    e-mail/whatsapp number
+                </li>
+                <li>the team members can view the questions but only the team captain answer is considered</li>
+                <li>if more than one participant/team claim for same winning spot, then the winner will be decided by
+                    the
+                    submission time.
+                </li>
+                <li>Winners wil be announced through the whatsapp group immediately after the end of quiz time</li>
+                <li>the prize amount will be transferred through their G-Pay account</li>
+                <li>Registration Starts on everey Wednesday and Closes by following Friday of the same week</li>
+            </ul>
+        </div>
+
+    </div>
+</body>
+<footer>
+    <div class="left">
+        <h2>About us
+        </h2>
+        <div class="content1">
+            <p>Sri Manakula Vinayagar Engineering College was established in the year 1999. The institution has been
+                approved by AICTE, New Delhi and affiliated to Pondicherry University. </p>
+            <div class="social">
+                <a href="https://www.facebook.com/SMVECOfficial"><span class="fa fa-facebook"></span></a>
+                <a href=""><span class="fa fa-instagram"></span></a>
+            </div>
+        </div>
+    </div>
+    <div class="right">
+        <h2>Address</h2>
+        <div class="content1">
+            <div class="place">
+                <span class="fa fa-map-marker"></span>
+                <span class="text">Sri Manakula Vinayagar Engineering College Madagadipet Mannadipet Commune
+                    Puducherry</span>
+            </div>
+            <div class="phone">
+                <span class="fa fa-phone"></span>
+                <span class="text">(0413)- 2641151/2640823 / 2642000</span>
+            </div>
+            <div class="email">
+                <span class="fa fa-envelope"></span>
+                <span class="text">smvec@smvec.ac.in</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</html>
